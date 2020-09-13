@@ -29,12 +29,12 @@ stages:
 
 - stage: Deployment
   jobs:
-  - job: Validation
+  - job: Deployment
     pool:
       vmImage: 'windows-latest'
     steps:
     - task: AzureResourceManagerTemplateDeployment@3
-      displayName: Validation
+      displayName: Deployment
       inputs:
         deploymentScope: 'Resource Group'
         azureResourceManagerConnection: 'Free Trial(2)(93a0beb1-d22d-4f41-9106-f3a61eb90b89)'
