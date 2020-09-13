@@ -6,14 +6,22 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+stages:
+- stage: Validation
+  jobs:
+  - job: Validation
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: Validation
+      inputs:
+        deploymentScope: 'Subscription'
+        azureResourceManagerConnection: 'Free Trial(1)(93a0beb1-d22d-4f41-9106-f3a61eb90b89)'
+        subscriptionId: '93a0beb1-d22d-4f41-9106-f3a61eb90b89'
+        location: 'Central US'
+        templateLocation: 'Linked artifact'
+        csmFile: '/ArmTemplates/webapp-template.json'
+        csmParametersFile: '/ArmTemplates/parameters.json'
+        deploymentMode: 'Validation'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
