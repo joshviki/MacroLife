@@ -16,9 +16,11 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: Validation
       inputs:
-        deploymentScope: 'Subscription'
-        azureResourceManagerConnection: 'Free Trial(1)(93a0beb1-d22d-4f41-9106-f3a61eb90b89)'
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: 'Free Trial(2)(93a0beb1-d22d-4f41-9106-f3a61eb90b89)'
         subscriptionId: '93a0beb1-d22d-4f41-9106-f3a61eb90b89'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'VstsRG-netflixtakerss-29a8'
         location: 'Central US'
         templateLocation: 'Linked artifact'
         csmFile: '$(Pipeline.Workspace)/**/ArmTemplates/webapp-template.json'
