@@ -1,0 +1,138 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "centralus"
+        },
+        "networkInterfaceName": {
+            "value": "macrolife705"
+        },
+        "networkSecurityGroupName": {
+            "value": "MacroLife-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "RDP",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "3389"
+                    }
+                },
+                {
+                    "name": "HTTP",
+                    "properties": {
+                        "priority": 320,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "80"
+                    }
+                },
+                {
+                    "name": "HTTPS",
+                    "properties": {
+                        "priority": 340,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "443"
+                    }
+                },
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 360,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkName": {
+            "value": "VstsRG-netflixtakerss-29a8-vnet"
+        },
+        "addressPrefixes": {
+            "value": [
+                "172.16.0.0/24"
+            ]
+        },
+        "subnets": {
+            "value": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "172.16.0.0/24"
+                    }
+                }
+            ]
+        },
+        "publicIpAddressName": {
+            "value": "MacroLife-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "MacroLife"
+        },
+        "virtualMachineComputerName": {
+            "value": "MacroLife"
+        },
+        "virtualMachineRG": {
+            "value": "VstsRG-netflixtakerss-29a8"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B1ms"
+        },
+        "adminUsername": {
+            "reference": {
+			"keyVault": {
+			"id": "/subscriptions/93a0beb1-d22d-4f41-9106-f3a61eb90b89/resourceGroups/VstsRG-netflixtakerss-29a8/providers/Microsoft.KeyVault/vaults/MacroLife"
+			},
+			"secretName": "vmAdminUsername"
+			}
+        },
+        "adminPassword": {
+		"reference": {
+			"keyVault": {
+			"id": "/subscriptions/93a0beb1-d22d-4f41-9106-f3a61eb90b89/resourceGroups/VstsRG-netflixtakerss-29a8/providers/Microsoft.KeyVault/vaults/MacroLife"
+			},
+			"secretName": "vmAdminPassword"
+			},
+			"dnsLabelPrefix": {
+			"value": "MacroLife"
+			}
+		}
+        "patchMode": {
+            "value": "AutomaticByOS"
+        }
+    }
+}
