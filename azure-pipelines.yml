@@ -21,7 +21,7 @@ stages:
         subscriptionId: '93a0beb1-d22d-4f41-9106-f3a61eb90b89'
         location: 'Central US'
         templateLocation: 'Linked artifact'
-        csmFile: '/ArmTemplates/webapp-template.json'
-        csmParametersFile: '/ArmTemplates/parameters.json'
+        csmFile: '$(Pipeline.Workspace)/**/ArmTemplates/webapp-template.json'
+        csmParametersFile: '$(Pipeline.Workspace)/**/ArmTemplates/parameters.json'
         deploymentMode: 'Validation'
 
