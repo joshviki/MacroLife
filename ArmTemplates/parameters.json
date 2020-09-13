@@ -117,7 +117,7 @@
 			"keyVault": {
 			"id": "/subscriptions/93a0beb1-d22d-4f41-9106-f3a61eb90b89/resourceGroups/VstsRG-netflixtakerss-29a8/providers/Microsoft.KeyVault/vaults/MacroLife"
 			},
-			"secretName": "vmAdminUsername"
+			"secretName": "adminUsername"
 			}
         },
         "adminPassword": {
@@ -125,7 +125,7 @@
 			"keyVault": {
 			"id": "/subscriptions/93a0beb1-d22d-4f41-9106-f3a61eb90b89/resourceGroups/VstsRG-netflixtakerss-29a8/providers/Microsoft.KeyVault/vaults/MacroLife"
 			},
-			"secretName": "vmAdminPassword"
+			"secretName": "adminPassword"
 			}
 		},
         "patchMode": {
